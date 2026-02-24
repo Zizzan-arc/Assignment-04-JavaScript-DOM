@@ -14,7 +14,7 @@ const rejectFilter = document.getElementById("rejecting-btn");
 const allCardSection = document.getElementById("allCards");
 const mainContainer = document.querySelector("main");
 const filterSection = document.getElementById("filtered-section");
-const filterTabs=document.getElementById("filtered-tabs");
+const filterTabs = document.getElementById("filtered-tabs");
 
 function calculateCount() {
   total.innerText = allCardSection.children.length; //3
@@ -56,20 +56,19 @@ function toggleStyle(id) {
   if (id === "interviewing-btn") {
     allCardSection.classList.add("hidden");
     filterSection.classList.remove("hidden");
-    filterTabs.classList.remove('hidden');
+    filterTabs.classList.remove("hidden");
     renderThriving();
     updateRightCount();
-    
   } else if (id === "all-filter-btn") {
     allCardSection.classList.remove("hidden");
     filterSection.classList.add("hidden");
-     filterTabs.classList.add('hidden');
-     updateRightCount();
+    filterTabs.classList.add("hidden");
+    updateRightCount();
   } else if (id === "rejecting-btn") {
     allCardSection.classList.add("hidden");
     filterSection.classList.remove("hidden");
-    filterTabs.classList.remove("hidden")
-   
+    filterTabs.classList.remove("hidden");
+
     renderStruggling();
     updateRightCount();
   }
@@ -89,13 +88,13 @@ mainContainer.addEventListener("click", function (event) {
     const positionName = parentNode.querySelector(".positionName").innerText;
 
     parentNode.querySelector(".status").innerText = "INTERVIEW";
-  
+
     const cardInfo = {
       companyName,
-       positionName,
-       location,
-       type,
-       salary,
+      positionName,
+      location,
+      type,
+      salary,
       status: "INTERVIEW",
       notes,
     };
@@ -134,11 +133,11 @@ mainContainer.addEventListener("click", function (event) {
     parenNode.querySelector(".status").innerText = "REJECTED";
 
     const cardInfo = {
-       companyName,
-       positionName,
-       location,
-       type,
-       salary,
+      companyName,
+      positionName,
+      location,
+      type,
+      salary,
       status: "REJECTED",
       notes,
     };
@@ -170,21 +169,20 @@ mainContainer.addEventListener("click", function (event) {
 function renderThriving() {
   // make the filterSection empty every time
   filterSection.innerHTML = "";
-  filterTabs.innerHTML= "";
-   
-  if(thrivingList.length===0){
-     let div = document.createElement("div");
-     div.className ="flex flex-col items-center justify-center text-center p-10 bg-[#F1F2F4] rounded-xl min-h-screen";
-     div.innerHTML=`
+  filterTabs.innerHTML = "";
+
+  if (thrivingList.length === 0) {
+    let div = document.createElement("div");
+    div.className =
+      "flex flex-col items-center justify-center text-center p-10 bg-[#F1F2F4] rounded-xl min-h-screen";
+    div.innerHTML = `
       <img src="./jobs.png" alt="" class="w-30 mb-4">
          
           <h2 class="text-[#002C5C] font-semibold text-3xl">No jobs available</h2>
           <p class="text-[#64748B] text-2xl font-medium">Check back soon for new job opportunities</p>
      
      `;
-     filterTabs.appendChild(div);
-
-    
+    filterTabs.appendChild(div);
   }
   // crating innerHtml
   for (let thrive of thrivingList) {
@@ -256,26 +254,23 @@ function renderThriving() {
 }
 
 function renderStruggling() {
- 
   filterSection.innerHTML = "";
- 
-  filterTabs.innerHTML= "";
-   
-  if(strugglingList.length===0){
-     let div = document.createElement("div");
-     div.className ="flex flex-col items-center justify-center text-center p-10 bg-[#F1F2F4] rounded-xl min-h-screen";
-     div.innerHTML=`
+
+  filterTabs.innerHTML = "";
+
+  if (strugglingList.length === 0) {
+    let div = document.createElement("div");
+    div.className =
+      "flex flex-col items-center justify-center text-center p-10 bg-[#F1F2F4] rounded-xl min-h-screen";
+    div.innerHTML = `
       <img src="./jobs.png" alt="" class="w-30 mb-4">
          
           <h2 class="text-[#002C5C] font-semibold text-3xl">No jobs available</h2>
           <p class="text-[#64748B] text-2xl font-medium">Check back soon for new job opportunities</p>
      
      `;
-     filterTabs.appendChild(div);
-
-    
+    filterTabs.appendChild(div);
   }
-
 
   // crating innerHtml
   for (let struggle of strugglingList) {
@@ -345,14 +340,13 @@ function renderStruggling() {
   }
 }
 
+// dynamically update the rightCount value
 function updateRightCount() {
-   if (currentStatus === "all-filter-btn") {
-      totalr.innerText = allCardSection.children.length + " jobs";
-   }
-   else if (currentStatus === "interviewing-btn") {
-      totalr.innerText = thrivingList.length + " jobs";
-   }
-   else if (currentStatus === "rejecting-btn") {
-      totalr.innerText = strugglingList.length + " jobs";
-   }
+  if (currentStatus === "all-filter-btn") {
+    totalr.innerText = allCardSection.children.length + " jobs";
+  } else if (currentStatus === "interviewing-btn") {
+    totalr.innerText = thrivingList.length + " jobs";
+  } else if (currentStatus === "rejecting-btn") {
+    totalr.innerText = strugglingList.length + " jobs";
+  }
 }
