@@ -68,40 +68,40 @@ function toggleStyle(id) {
 // step 2 delegation
 mainContainer.addEventListener("click", function (event) {
   if (event.target.classList.contains("interview-click-btn")) {
-    const parenNode = event.target.parentNode.parentNode;
+    const parentNode = event.target.parentNode.parentNode;
 
-    const plantName = parenNode.querySelector(".plantName").innerText;
-    const light = parenNode.querySelector(".light").innerText;
-    const water = parenNode.querySelector(".water").innerText;
-    const status = parenNode.querySelector(".status").innerText;
-    const notes = parenNode.querySelector(".notes").innerText;
-    const water2 = parenNode.querySelector(".water2").innerText;
-    const latinName = parenNode.querySelector(".latinName").innerText;
+    const companyName = parentNode.querySelector(".companyName").innerText;
+    const location = parentNode.querySelector(".location").innerText;
+    const type = parentNode.querySelector(".type").innerText;
+    const status = parentNode.querySelector(".status").innerText;
+    const notes = parentNode.querySelector(".notes").innerText;
+    const salary = parentNode.querySelector(".salary").innerText;
+    const positionName = parentNode.querySelector(".positionName").innerText;
 
-    parenNode.querySelector(".status").innerText = "INTERVIEW";
+    parentNode.querySelector(".status").innerText = "INTERVIEW";
   
     const cardInfo = {
-      plantName,
-      latinName,
-      light,
-      water,
-      water2,
+      companyName,
+       positionName,
+       location,
+       type,
+       salary,
       status: "INTERVIEW",
       notes,
     };
 
-    const plantExist = thrivingList.find(
-      (item) => item.plantName == cardInfo.plantName,
+    const cExist = thrivingList.find(
+      (item) => item.companyName == cardInfo.companyName,
     );
 
-    if (!plantExist) {
+    if (!cExist) {
       thrivingList.push(cardInfo);
     }
 
     // step 2 finish
     // removing the plant from struggling list
     strugglingList = strugglingList.filter(
-      (item) => item.plantName != cardInfo.plantName,
+      (item) => item.companyName != cardInfo.companyName,
     );
 
     // after remove rerender the html
@@ -113,37 +113,37 @@ mainContainer.addEventListener("click", function (event) {
   } else if (event.target.classList.contains("rejected-click-btn")) {
     const parenNode = event.target.parentNode.parentNode;
 
-    const plantName = parenNode.querySelector(".plantName").innerText;
-    const light = parenNode.querySelector(".light").innerText;
-    const water = parenNode.querySelector(".water").innerText;
+    const companyName = parenNode.querySelector(".companyName").innerText;
+    const location = parenNode.querySelector(".location").innerText;
+    const type = parenNode.querySelector(".type").innerText;
     const status = parenNode.querySelector(".status").innerText;
     const notes = parenNode.querySelector(".notes").innerText;
-    const latinName = parenNode.querySelector(".latinName").innerText;
-    const water2 = parenNode.querySelector(".water2").innerText;
+    const positionName = parenNode.querySelector(".positionName").innerText;
+    const salary = parenNode.querySelector(".salary").innerText;
 
     parenNode.querySelector(".status").innerText = "REJECTED";
 
     const cardInfo = {
-      plantName,
-      latinName,
-      light,
-      water,
-      water2,
+       companyName,
+       positionName,
+       location,
+       type,
+       salary,
       status: "REJECTED",
       notes,
     };
 
-    const plantExist = strugglingList.find(
-      (item) => item.plantName == cardInfo.plantName,
+    const cExist = strugglingList.find(
+      (item) => item.companyName == cardInfo.companyName,
     );
 
-    if (!plantExist) {
+    if (!cExist) {
       strugglingList.push(cardInfo);
     }
 
     // removing the plant from thriving list
     thrivingList = thrivingList.filter(
-      (item) => item.plantName != cardInfo.plantName,
+      (item) => item.companyName != cardInfo.companyName,
     );
 
     // console.log(thrivingList);
@@ -175,19 +175,19 @@ function renderThriving() {
          <div class="space-y-6">
             <!-- part 1 -->
             <div>
-              <p class="plantName text-4xl">${thrive.plantName}</p>
-              <p class="latinName text-xl text-[#444e5e]">
-                ${thrive.latinName}
+              <p class="companyName text-4xl">${thrive.companyName}</p>
+              <p class="positionName text-xl text-[#444e5e]">
+                ${thrive.positionName}
               </p>
             </div>
 
             <!-- part 2 -->
             <div class="flex gap-2">
               <ul class="flex justify-between gap-7">
-                <li class="light gap-2 text-[#444e5e]">${thrive.light}</li>
-                <li class="water list-disc gap-2 text-[#444e5e]">${thrive.water}</li>
-                <li class="water2 list-disc gap-2 text-[#444e5e]">
-                  ${thrive.water2}
+                <li class="location gap-2 text-[#444e5e]">${thrive.location}</li>
+                <li class="type list-disc gap-2 text-[#444e5e]">${thrive.type}</li>
+                <li class="salary list-disc gap-2 text-[#444e5e]">
+                  ${thrive.salary}
                 </li>
               </ul>
             </div>
@@ -250,19 +250,19 @@ function renderStruggling() {
          <div class="space-y-6">
             <!-- part 1 -->
             <div>
-              <p class="plantName text-4xl">${struggle.plantName}</p>
-              <p class="latinName text-xl text-[#444e5e]">
-                ${struggle.latinName}
+              <p class="companyName text-4xl">${struggle.companyName}</p>
+              <p class="positionName text-xl text-[#444e5e]">
+                ${struggle.positionName}
               </p>
             </div>
 
             <!-- part 2 -->
             <div class="flex gap-2">
               <ul class="flex justify-between gap-7">
-                <li class="light gap-2 text-[#444e5e]">${struggle.light}</li>
-                <li class="water list-disc gap-2 text-[#444e5e]">${struggle.water}</li>
-                <li class="water2 list-disc gap-2 text-[#444e5e]">
-                  ${struggle.water2}
+                <li class="location gap-2 text-[#444e5e]">${struggle.location}</li>
+                <li class="type list-disc gap-2 text-[#444e5e]">${struggle.type}</li>
+                <li class="salary list-disc gap-2 text-[#444e5e]">
+                  ${struggle.salary}
                 </li>
               </ul>
             </div>
