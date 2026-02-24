@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment-4</title>
+    <script src="https://c4>dn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body>
+    <header class="w-[85%] mx-auto p-7">
+      <h1 class="text-4xl font-bold text-[#002C5C] mb-4">
+        Job Application Tracker
+      </h1>
+      <div class="grid grid-cols-3 gap-8">
+        <div class="bg-[#F1F2F4] p-4 rounded-2xl">
+          <p class="text-[#323B49] font-bold">Total</p>
+          <p id="total" class="text-2xl">0</p>
+        </div>
+
+        <div class="bg-[#F1F2F4] p-4 rounded-2xl">
+          <p class="text-[#323B49] font-bold">Interview</p>
+          <p id="interviewCount" class="text-green-400 text-2xl">0</p>
+        </div>
+
+        <div class="bg-[#F1F2F4] p-4 rounded-2xl">
+          <p class="text-[#323B49] font-bold">Rejected</p>
+          <p id="rejectCount" class="text-red-600 text-2xl">0</p>
+        </div>
+      </div>
+    </header>
+
+    <hr class="my-15 mt-1 w-[83%] mx-auto" />
+
+    <!-- Main Class starts here -->
+    <main class="w-[80%] mx-auto mb-15">
+      <!-- Availagbe section -->
+
+      <div class="flex justify-between mb-5">
+        <h3 class="text-[#002C5C] text-3xl font-medium">Available Jobs</h3>
+        <p id="total-right" class="text-3xl text-[#64748B]">0 jobs</p>
+      </div>
+
+      <!-- Filtering TABS buttons -->
+      <div class="mb-7 flex gap-4">
+        <button
+          onclick="toggleStyle('all-filter-btn')"
+          class="bg-black text-white px-9 py-2 rounded-xl"
+          id="all-filter-btn"
+        >
+          All
+        </button>
+        <button
+          onclick="toggleStyle('interviewing-btn')"
+          class="bg-gray-400 px-5 py-2 rounded-xl"
+          id="interviewing-btn"
+        >
+          INTERVIEW
+        </button>
+        <button
+          onclick="toggleStyle('rejecting-btn')"
+          class="bg-gray-400 px-5 py-2 rounded-xl"
+          id="rejecting-btn"
+        >
+          REJECTED
+        </button>
+      </div>
+
+      <!-- Filtered card -->
+
+      <section id="filtered-section" class="hidden space-y-6"></section>
+
+      <!-- ================!!!================== -->
+
+      <section id="allCards" class="space-y-6">
+        <!-- card 1 -->
+        <div
+          class="card flex justify-between border p-8 rounded-2xl bg-[#F1F2F4]"
+        >
+          <!-- main part 1 -->
+          <div class="space-y-6">
+            <!-- part 1 -->
+            <div>
+              <p class="plantName text-4xl">Mobile First Corp</p>
+              <p class="latinName text-xl text-[#444e5e]">
+                React Native Developer
+              </p>
+            </div>
+
+            <!-- part 2 -->
+            <div class="flex gap-2">
+              <ul class="flex justify-between gap-7">
+                <li class="light gap-2 text-[#444e5e]">Remote</li>
+                <li class="water list-disc gap-2 text-[#444e5e]">Full-time</li>
+                <li class="water2 list-disc gap-2 text-[#444e5e]">
+                  $130,000 - $175,000
+                </li>
+              </ul>
+            </div>
+            <!-- part 3 -->
+            <div class="flex">
+              <p
+                class="status border-2 p-2 bg-[#EEF4FF] text-[#002C5C] border-amber-400 rounded-xl"
+              >
+                Not Applied
+              </p>
+            </div>
+            <p class="notes text-[#444e5e] font-semibold">
+              Build cross-platform mobile applications using React Native. Work
+              on products used by millions of users worldwide.
+            </p>
+
+            <!-- card buttons -->
+
+            <div class="flex gap-5">
+              <button
+                class="interview-click-btn text-[#10B981] font-semibold border-2 px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#10B981]"
+              >
+                interview
+              </button>
+              <button
+                class="rejected-click-btn text-[#EF4444] border-2 font-semibold px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#EF4444]"
+              >
+                rejected
+              </button>
+            </div>
+          </div>
+
+          <!-- main part 2 -->
+          <div>
+            <button
+              class="btn-delete bg-transparent text-red-600 border-2 px-4 py-2 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#EF4444] "
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <!-- card 2 -->
+        <div
+          class="card flex justify-between border p-8 rounded-2xl bg-[#F1F2F4]"
+        >
+          <div class="space-y-6">
+            <div>
+              <p class="plantName text-4xl">WebFlow Agency</p>
+              <p class="latinName text-xl text-[#444e5e]">
+                Web Designer & Developer
+              </p>
+            </div>
+
+            <div class="flex gap-2">
+              <ul class="flex justify-between gap-7">
+                <li class="light gap-2 text-[#444e5e]">Los Angeles, CA</li>
+                <li class="water list-disc gap-2 text-[#444e5e]">Part-time</li>
+                <li class="water2 list-disc gap-2 text-[#444e5e]">
+                  $80,000 - $120,000
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex">
+              <p
+                class="status border-2 p-2 bg-[#EEF4FF] text-[#002C5C] border-amber-400 rounded-xl"
+              >
+                Not Applied
+              </p>
+            </div>
+
+            <p class="notes text-[#444e5e] font-semibold">
+              Build cross-platform mobile applications using React Native. Work
+              on products used by millions of users worldwide.
+            </p>
+
+            <div class="flex gap-5">
+              <button
+                class="interview-click-btn text-[#10B981] font-semibold border-2 px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#10B981]"
+              >
+                interview
+              </button>
+              <button
+                class="rejected-click-btn text-[#EF4444] border-2 font-semibold px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#EF4444]"
+              >
+                rejected
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <button
+              class="btn-delete bg-transparent text-red-600 border-2 px-4 py-2 rounded-xl"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <!-- card 3 -->
+        <div
+          class="card flex justify-between border p-8 rounded-2xl bg-[#F1F2F4]"
+        >
+          <div class="space-y-6">
+            <div>
+              <p class="plantName text-4xl">DataViz Solutions</p>
+              <p class="latinName text-xl text-[#444e5e]">
+                Data Visualization Specialist
+              </p>
+            </div>
+
+            <div class="flex gap-2">
+              <ul class="flex justify-between gap-7">
+                <li class="light gap-2 text-[#444e5e]">Boston, MA</li>
+                <li class="water list-disc gap-2 text-[#444e5e]">Full-time</li>
+                <li class="water2 list-disc gap-2 text-[#444e5e]">
+                  $125,000 - $165,000
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex">
+              <p
+                class="status border-2 p-2 bg-[#EEF4FF] text-[#002C5C] border-amber-400 rounded-xl"
+              >
+                Not Applied
+              </p>
+            </div>
+
+            <p class="notes text-[#444e5e] font-semibold">
+              Transform complex data into compelling visualizations. Required
+              skills: D3.js, React, and strong analytical thinking.
+            </p>
+
+            <div class="flex gap-5">
+              <button
+                class="interview-click-btn  text-[#10B981] font-semibold border-2 px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#10B981]"
+              >
+                interview
+              </button>
+              <button
+                class="rejected-click-btn text-[#EF4444] border-2 font-semibold px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#EF4444]"
+              >
+                rejected
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <button
+              class="btn-delete bg-transparent text-red-600 border-2 px-4 py-2 rounded-xl"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <!-- card 4 -->
+        <div
+          class="card flex justify-between border p-8 rounded-2xl bg-[#F1F2F4]"
+        >
+          <div class="space-y-6">
+            <div>
+              <p class="plantName text-4xl">Innovation Labs</p>
+              <p class="latinName text-xl text-[#444e5e]">UI/UX Engineer</p>
+            </div>
+
+            <div class="flex gap-2">
+              <ul class="flex justify-between gap-7">
+                <li class="light gap-2 text-[#444e5e]">Austin, TX</li>
+                <li class="water list-disc gap-2 text-[#444e5e]">Full-time</li>
+                <li class="water2 list-disc gap-2 text-[#444e5e]">
+                  $110,000 - $150,000
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex">
+              <p
+                class="status border-2 p-2 bg-[#EEF4FF] text-[#002C5C] border-amber-400 rounded-xl"
+              >
+                Not Applied
+              </p>
+            </div>
+
+            <p class="notes text-[#444e5e] font-semibold">
+              Create beautiful and functional user interfaces for our suite of
+              products. Strong design skills and frontend development expertise
+              required.
+            </p>
+
+            <div class="flex gap-5">
+              <button
+                class="interview-click-btn  text-[#10B981] font-semibold border-2 px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#10B981]"
+              >
+                interview
+              </button>
+              <button
+                class="rejected-click-btn text-[#EF4444] border-2 font-semibold px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#EF4444]"
+              >
+                rejected
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <button
+              class="btn-delete bg-transparent text-red-600 border-2 px-4 py-2 rounded-xl"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <!-- card 5 -->
+        <div
+          class="card flex justify-between border p-8 rounded-2xl bg-[#F1F2F4]"
+        >
+          <div class="space-y-6">
+            <div>
+              <p class="plantName text-4xl">StartupXYZ</p>
+              <p class="latinName text-xl text-[#444e5e]">
+                Full Stack Engineer
+              </p>
+            </div>
+
+            <div class="flex gap-2">
+              <ul class="flex justify-between gap-7">
+                <li class="light gap-2 text-[#444e5e]">Remote</li>
+                <li class="water list-disc gap-2 text-[#444e5e]">Full-time</li>
+                <li class="water2 list-disc gap-2 text-[#444e5e]">
+                  $120,000 - $160,000
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex">
+              <p
+                class="status border-2 p-2 bg-[#EEF4FF] text-[#002C5C] border-amber-400 rounded-xl"
+              >
+                Not Applied
+              </p>
+            </div>
+
+            <p class="notes text-[#444e5e] font-semibold">
+              Join our fast-growing startup and work on our core platform.
+              Experience with Node.js and React required. Great benefits and
+              equity package included.
+            </p>
+
+            <div class="flex gap-5">
+              <button
+                class="interview-click-btn  text-[#10B981] font-semibold border-2 px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#10B981]"
+              >
+                interview
+              </button>
+              <button
+                class="rejected-click-btn text-[#EF4444] border-2 font-semibold px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#10B981]"
+              >
+                rejected
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <button
+              class="btn-delete bg-transparent text-red-600 border-2 px-4 py-2 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#EF4444]"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <!-- card 6 -->
+        <div
+          class="card flex justify-between border p-8 rounded-2xl bg-[#F1F2F4]"
+        >
+          <div class="space-y-6">
+            <div>
+              <p class="plantName text-4xl">TechCorp Industries</p>
+              <p class="latinName text-xl text-[#444e5e]">
+                Senior Frontend Developer
+              </p>
+            </div>
+
+            <div class="flex gap-2">
+              <ul class="flex justify-between gap-7">
+                <li class="light gap-2 text-[#444e5e]">San Francisco, CA</li>
+                <li class="water list-disc gap-2 text-[#444e5e]">Full-time</li>
+                <li class="water2 list-disc gap-2 text-[#444e5e]">
+                  $130,000 - $175,000
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex">
+              <p
+                class="status border-2 p-2 bg-[#EEF4FF] text-[#002C5C] border-amber-400 rounded-xl"
+              >
+                Not Applied
+              </p>
+            </div>
+
+            <p class="notes text-[#444e5e] font-semibold">
+              We are looking for an experienced Frontend Developer to build
+              scalable web applications using React and TypeScript.
+            </p>
+
+            <div class="flex gap-5">
+              <button
+                class="interview-click-btn  text-[#10B981] font-semibold border-2 px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#10B981]"
+              >
+                interview
+              </button>
+              <button
+                class="rejected-click-btn text-[#EF4444] border-2 font-semibold px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#EF4444]"
+              >
+                rejected
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <button
+              class="btn-delete bg-transparent text-red-600 border-2 px-4 py-2 rounded-xl"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <!-- card 7 -->
+        <div
+          class="card flex justify-between border p-8 rounded-2xl bg-[#F1F2F4]"
+        >
+          <div class="space-y-6">
+            <div>
+              <p class="plantName text-4xl">CloudFirst Inc</p>
+              <p class="latinName text-xl text-[#444e5e]">Backend Developer</p>
+            </div>
+
+            <div class="flex gap-2">
+              <ul class="flex justify-between gap-7">
+                <li class="light gap-2 text-[#444e5e]">Seattle, WA</li>
+                <li class="water list-disc gap-2 text-[#444e5e]">Full-time</li>
+                <li class="water2 list-disc gap-2 text-[#444e5e]">
+                  $140,000 - $190,000
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex">
+              <p
+                class="status border-2 p-2 bg-[#EEF4FF] text-[#002C5C] border-amber-400 rounded-xl"
+              >
+                Not Applied
+              </p>
+            </div>
+
+            <p class="notes text-[#444e5e] font-semibold">
+              Build backend systems and scalable APIs powering millions of
+              users.
+            </p>
+
+            <div class="flex gap-5">
+              <button
+                class="interview-click-btn  text-[#10B981] font-semibold border-2 px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#10B981]"
+              >
+                interview
+              </button>
+              <button
+                class="rejected-click-btn text-[#EF4444] border-2 font-semibold px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#EF4444]"
+              >
+                rejected
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <button
+              class="btn-delete bg-transparent text-red-600 border-2 px-4 py-2 rounded-xl"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <!-- card 8 -->
+        <div
+          class="card flex justify-between border p-8 rounded-2xl bg-[#F1F2F4]"
+        >
+          <div class="space-y-6">
+            <div>
+              <p class="plantName text-4xl">MegaCorp Solutions</p>
+              <p class="latinName text-xl text-[#444e5e]">
+                JavaScript Developer
+              </p>
+            </div>
+
+            <div class="flex gap-2">
+              <ul class="flex justify-between gap-7">
+                <li class="light gap-2 text-[#444e5e]">New York, NY</li>
+                <li class="water list-disc gap-2 text-[#444e5e]">Full-time</li>
+                <li class="water2 list-disc gap-2 text-[#444e5e]">
+                  $130,000 - $170,000
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex">
+              <p
+                class="status border-2 p-2 bg-[#EEF4FF] text-[#002C5C] border-amber-400 rounded-xl"
+              >
+                Not Applied
+              </p>
+            </div>
+
+            <p class="notes text-[#444e5e] font-semibold">
+              Work with modern JavaScript frameworks and build enterprise-level
+              applications.
+            </p>
+
+            <div class="flex gap-5">
+              <button
+                class="interview-click-btn  text-[#10B981] font-semibold border-2 px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#10B981]"
+              >
+                interview
+              </button>
+              <button
+                class="rejected-click-btn text-[#EF4444] border-2 font-semibold px-4 py-2 uppercase rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#EF4444]"
+              >
+                rejected
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <button
+              class="btn-delete bg-transparent text-red-600 border-2 px-4 py-2 rounded-xl"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+
+
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
