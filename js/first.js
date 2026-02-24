@@ -14,6 +14,7 @@ const rejectFilter = document.getElementById("rejecting-btn");
 const allCardSection = document.getElementById("allCards");
 const mainContainer = document.querySelector("main");
 const filterSection = document.getElementById("filtered-section");
+const filterTabs=document.getElementById("filtered-tabs");
 
 function calculateCount() {
   total.innerText = allCardSection.children.length; //3
@@ -54,13 +55,16 @@ function toggleStyle(id) {
   if (id === "interviewing-btn") {
     allCardSection.classList.add("hidden");
     filterSection.classList.remove("hidden");
+    filterTabs.classList.remove('hidden');
     renderThriving();
   } else if (id === "all-filter-btn") {
     allCardSection.classList.remove("hidden");
     filterSection.classList.add("hidden");
+     filterTabs.classList.add('hidden');
   } else if (id === "rejecting-btn") {
     allCardSection.classList.add("hidden");
     filterSection.classList.remove("hidden");
+    filterTabs.classList.remove("hidden")
     renderStruggling();
   }
 }
@@ -160,9 +164,21 @@ mainContainer.addEventListener("click", function (event) {
 function renderThriving() {
   // make the filterSection empty every time
   filterSection.innerHTML = "";
+  filterTabs.innerHTML= "";
    
   if(thrivingList.length===0){
-    console.log("No jobs Available");
+     let div = document.createElement("div");
+     div.className ="flex flex-col items-center justify-center text-center p-10 bg-[#F1F2F4] rounded-xl min-h-screen";
+     div.innerHTML=`
+      <img src="./jobs.png" alt="" class="w-30 mb-4">
+         
+          <h2 class="text-[#002C5C] font-semibold text-3xl">No jobs available</h2>
+          <p class="text-[#64748B] text-2xl font-medium">Check back soon for new job opportunities</p>
+     
+     `;
+     filterTabs.appendChild(div);
+
+    
   }
   // crating innerHtml
   for (let thrive of thrivingList) {
@@ -234,12 +250,27 @@ function renderThriving() {
 }
 
 function renderStruggling() {
-  // make the filterSection empty every time
-
-   if(strugglingList.length===0){
-    console.log("No jobs Available");
-  }
+ 
   filterSection.innerHTML = "";
+ 
+  filterTabs.innerHTML= "";
+   
+  if(thrivingList.length===0){
+     let div = document.createElement("div");
+     div.className ="flex flex-col items-center justify-center text-center p-10 bg-[#F1F2F4] rounded-xl min-h-screen";
+     div.innerHTML=`
+      <img src="./jobs.png" alt="" class="w-30 mb-4">
+         
+          <h2 class="text-[#002C5C] font-semibold text-3xl">No jobs available</h2>
+          <p class="text-[#64748B] text-2xl font-medium">Check back soon for new job opportunities</p>
+     
+     `;
+     filterTabs.appendChild(div);
+
+    
+  }
+
+
   // crating innerHtml
   for (let struggle of strugglingList) {
     let div = document.createElement("div");

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assignment-4</title>
-    <script src="https://c4>dn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
   <body>
@@ -71,7 +71,26 @@
       <section id="filtered-section" class="hidden space-y-6"></section>
 
       <!-- ================!!!================== -->
+       <!-- if no nothing is present on Interview Tabs and Rejected Tabs -->
 
+        <section id="filtered-tabs" class=" hidden">
+          <div class="flex flex-col items-center justify-center text-center p-10 bg-[#F1F2F4] rounded-xl min-h-screen">
+          <img src="./jobs.png" alt="" class="w-30 mb-4">
+         
+          <h2 class="text-[#002C5C] font-semibold text-3xl">No jobs available</h2>
+          <p class="text-[#64748B] text-2xl font-medium">Check back soon for new job opportunities</p>
+          </div>
+ 
+
+
+
+        </section>
+
+
+
+
+       <!-- ================!!!================== -->
+     
       <section id="allCards" class="space-y-6">
         <!-- card 1 -->
         <div
@@ -543,6 +562,7 @@
 
       </section>
     </main>
+    
 
     <script src="./js/first.js"></script>
   </body>
